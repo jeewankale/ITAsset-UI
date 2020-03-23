@@ -1,3 +1,4 @@
+import { BFormGroup, BBadge, BCardText } from "bootstrap-vue";
 
 export default {
   mode: 'universal',
@@ -16,6 +17,15 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.png?v=3' },
+    { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" }
+  ],
+  script: [
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' },
+    { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
+    { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' }
+  ],
   router: {
     // middleware: 'auth'
     // Run the middleware/user-agent.js on every page
@@ -48,7 +58,22 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    
   ],
+  bootstrapVue: {
+    componentPlugins: [
+      'LayoutPlugin',
+      'FormPlugin',
+      'FormCheckboxPlugin',
+      'FormInputPlugin',
+      'FormRadioPlugin',
+      'ToastPlugin',
+      'ModalPlugin'
+    ],
+    directivePlugins: ['VBPopoverPlugin', 'VBTooltipPlugin', 'VBScrollspyPlugin'],
+    components: ['BContainer', 'BRow', 'BCol', 'BFormInput', 'BButton', 'BTable', 'BModal','BCard','BFormGroup','BBadge','BCardText'],
+    directives: ['VBModal', 'VBPopover', 'VBTooltip', 'VBScrollspy']
+  },
   /*
   ** Build configuration
   */
@@ -58,14 +83,5 @@ export default {
     */
     extend (config, ctx) {
     }
-  },
-  modules: [
-    'mdbvue/nuxt'
-  ],
-  mdbvue: {
-    icons: false, // FA5
-    roboto: false, // font Roboto
-    css: false, // MDB CSS
-    bootstrap: false // Bootstrap CSS
-  },
+  }
 }
